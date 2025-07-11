@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>untuk fidela salsabila</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: 
+        linear-gradient(to right, rgba(102, 100, 100, 0.427), rgba(245, 232, 206, 0.597)),
+        url('WhatsApp Image 2025-07-11 at 20.44.22_312006c1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 600px;
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeInText 1.5s ease-in-out;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    .love {
+      font-size: 3em;
+      animation: heartbeat 2s infinite;
+      color: #e63946;
+      margin-top: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Bunga Jatuh */
+    .flower {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://pngimg.com/uploads/rose/rose_PNG669.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Kontainer Isi -->
+  <div class="container">
+    <div class="slide active">
+      <h1>untukmu yang sedang berjuang aku selalu ada, meski tak selalu terlihat</h1>
+      <p>
+       Semester ini mungkin tak mudah, tetapi aku percaya kamu mampu melewatinya dengan baik.
+       Bersama keyakinan dan ketekunanmu, aku akan selalu menjadi penyemangat dalam diam.
+      </p>
+    </div>
+
+    <div class="slide">
+      <h1>Semangat ya, Fidell !!!</h1>
+      <p>
+        Tugas boleh berat, tapi kamu lebih kuat. Jangan lupa, ada aku yang selalu mendukungmu
+        dari kejauhan. Kita satu tujuan, saling mendukung dalam diam dan doa.
+      </p>
+    </div>
+
+    <div class="slide">
+      <h1>Hari ini boleh lelah, tapi jangan menyerah</h1>
+      <p>
+        Tetaplah semangat menapaki semester kelima ini. Setiap langkah dan lelahmu adalah bagian dari
+        perjuangan yang akan membuahkan hasil. Aku selalu mendukungmu dalam doa. 
+      </p>
+    </div>
+
+    <div class="love">❤️</div>
+  </div>
+
+  <!-- Lagu Latar -->
+  <audio autoplay loop>
+    <source src="c:\Users\finska aprilicia\Downloads\kasihputih.mp3" type="audio/mp3">
+    Browsermu tidak mendukung pemutar audio.
+  </audio>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.querySelector("audio");
+      const loveBtn = document.querySelector(".love");
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+
+      // Coba autoplay audio
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          loveBtn.style.cursor = 'pointer';
+          loveBtn.title = "Klik untuk memutar lagu";
+          loveBtn.addEventListener('click', () => {
+            audio.play();
+          }, { once: true });
+        });
+      }
+
+      // Slide otomatis
+      setInterval(() => {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }, 6000);
+
+      // Tambahkan bunga jatuh
+      for (let i = 0; i < 25; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.animationDuration = (5 + Math.random() * 5) + 's';
+        flower.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(flower);
+      }
+    });
+  </script>
+
+</body>
+</html>
